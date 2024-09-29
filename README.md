@@ -1,0 +1,2 @@
+## AWS CloudFront Cache Invalidation Github Action
+> This action can be used to perform `CreateInvalidationCommand` against an AWS CloudFront distribution in order to invalidate caches content, so users of an app can get the latest content to be cached as explained here -> https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html 
