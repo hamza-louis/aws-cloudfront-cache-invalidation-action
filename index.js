@@ -1,6 +1,8 @@
-const { CloudFrontClient, CreateInvalidationCommand , GetInvalidationCommand } = require("@aws-sdk/client-cloudfront"); 
+const { CloudFrontClient, CreateInvalidationCommand , GetInvalidationCommand } = require("@aws-sdk/client-cloudfront");
+const core = require('@actions/core');
+const github = require('@actions/github');
 
-const cloudfront = new CloudFrontClient({region: process.env.AWS_REGION});
+const cloudfront = new CloudFrontClient({region: core.getInput('aws_region')});
 
 
 const checkCFCacheInvalidationStatus = async (CFDistributionID, CFInvalidationID) => {
@@ -22,8 +24,8 @@ const checkCFCacheInvalidationStatus = async (CFDistributionID, CFInvalidationID
 };
 
 const invalidateCFCacheAndWait = async (CFDistributionID, CFInvalidationPaths) => {
-    CFDistributionID=process.env.CF_DISTRIBUTION_ID
-    CFInvalidationPaths=process.env.CF_INVALIDATION_PATHS
+    CFDistributionID = core.getInput('cf_distribution_id');
+    CFInvalidationPaths = core.getInput('cf_invalidation_paths');
     const invalidationRequestBody = {
         DistributionId: CFDistributionID, 
         InvalidationBatch: { 
