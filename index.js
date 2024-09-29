@@ -16,7 +16,7 @@ const checkCFCacheInvalidationStatus = async (CFDistributionID, CFInvalidationID
       status = invalidationResult.Invalidation.Status;
       console.log(`Current status: ${status}`);
       
-      console.log(`Waiting for 5 seconds before re-checking the status ...`)
+      console.log(`Waiting for 3 seconds before re-checking the status ...`)
       await new Promise(resolve => setTimeout(resolve, 3000));
     }
 
