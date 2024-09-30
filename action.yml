@@ -1,0 +1,20 @@
+name: 'AWS CloudFront Cache Invalidation Action'
+description: 'Invalidate cache within a specific AWS CloudFront distribution'
+inputs:
+  aws_region:
+    description: 'CloudFront is basically regionless, but it requires you to use any region to talk to it'
+    required: true
+  cf_distribution_id: 
+    description: 'The ID of the CloudFront distribution you want to manage. This is required for operations such as invalidation or updating distribution settings'
+    required: true
+  cf_invalidation_paths:
+    description: 'A list of paths to invalidate in the CloudFront distribution. Paths should be specified as an array of strings, e.g., ["/index.html", "/*"]. Use "/*" to invalidate all objects'
+    required: true
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'clock'
+  color: 'red'
