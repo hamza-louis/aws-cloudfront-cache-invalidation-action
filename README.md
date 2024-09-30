@@ -35,7 +35,7 @@ This action is a `node20` action.
     # Default: ""
 
     cf_invalidation_paths:
-    # A list of paths to invalidate in the CloudFront distribution. Paths should be specified as an array of strings, e.g., ["/index.html", "/*"]. Use "/*" to invalidate all objects
+    # A list of paths to invalidate in the CloudFront distribution. Paths should be specified as an array of strings, e.g., < '/*','/index.html' >. Use '/*' to invalidate all objects
     #
     # Required: true
     # Default: ""

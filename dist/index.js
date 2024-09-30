@@ -65407,14 +65407,15 @@ const checkCFCacheInvalidationStatus = async (CFDistributionID, CFInvalidationID
 };
 
 const invalidateCFCacheAndWait = async (CFDistributionID, CFInvalidationPaths) => {
+    let CFInvalidationPathsArray = [];
+    CFInvalidationPathsArray.push(core.getInput('cf_invalidation_paths'))
     CFDistributionID = core.getInput('cf_distribution_id');
-    CFInvalidationPaths = core.getInput('cf_invalidation_paths');
     const invalidationRequestBody = {
         DistributionId: CFDistributionID, 
         InvalidationBatch: { 
           Paths: {
-            Quantity: CFInvalidationPaths.length, 
-            Items: CFInvalidationPaths
+              Quantity: CFInvalidationPathsArray.length, 
+              Items: CFInvalidationPathsArray
             },
           CallerReference: `${Date.now()}`, 
         },
